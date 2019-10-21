@@ -6,4 +6,3 @@ avr/deps/*
 !avr/deps/yices_smt2
 # !avr/deps/yosys
 !avr/deps/z3
-
