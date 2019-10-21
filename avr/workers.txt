@@ -1,0 +1,8 @@
+python3 avr.py --abstract sa
+python3 avr.py
+python3 avr.py --bmc
+python3 avr.py --abstract sa8 --level 5 --granularity 3 --interpol 1
+python3 avr.py --abstract sa32 --level 0 --granularity 3
+python3 avr.py --abstract sa --interpol 1
+python3 avr.py --split --level 0
+python3 avr.py --abstract sa4 --split --interpol 1
