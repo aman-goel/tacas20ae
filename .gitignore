@@ -3,7 +3,7 @@ avr/deps/*
 
 !avr/deps/btorsim
 !avr/deps/mathsat
-# !avr/deps/yices_smt2
+!avr/deps/yices_smt2
 # !avr/deps/yosys
-# !avr/deps/z3
+!avr/deps/z3
 
