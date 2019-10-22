@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "================================================================"
-echo "> Let's install some dependencies"
+echo "> Let's install some dependencies (distutils, tcl, xdot)"
 read -p "> press enter to continue?" userInput
 sudo apt-get install python3-distutils tcl8.6-dev xdot
 echo "> Done with dependencies"
@@ -20,8 +20,9 @@ BTORSIM="../../deps/btorsim"
 
 echo "================================================================"
 echo "> Let's run avr on the first case study cs1 (using VMT frontend)"
-echo "> part 1: apache-escape-absolute (with machine integers first i.e. 32-bit variables using bit-vector theory)"
+echo "> Experiment 1: apache-escape-absolute (with machine integers first i.e. 32-bit variables using bit-vector theory)"
 echo "> check the C file inputs/cs1/c/apache-escape-absolute.c for understanding the problem"
+echo "> [evaluates: case study 1.1 (using BV), VMT frontend, proof certificates, verifying certificates using yices2]"
 read -p "> press enter to continue?" userInput
 python3 avr.py -n apache_escape_absolute_bv inputs/cs1/bv/apache-escape-absolute_bv.vmt
 echo "> [avr should say h i.e. safe (all output logs and files in output/work_apache_escape_bv)]"
@@ -38,7 +39,8 @@ echo "> [should report all three smt checks as unsat]"
 read -p "> press enter to continue?" userInput
 echo
 
-echo "> Now let's repeat the same (run apache-escape-absolute) with software integers i.e. unbounded variables using linear-integer-arithmetic theory"
+echo "> Experiment 2: Now let's repeat the same (run apache-escape-absolute) with software integers i.e. unbounded variables using linear-integer-arithmetic theory"
+echo "> [evaluates: case study 1.1 (using LIA), VMT frontend, proof certificates, verifying certificates using z3]"
 read -p "> press enter to continue?" userInput
 python3 avr.py -n apache_escape_absolute_lia inputs/cs1/lia/apache-escape-absolute_lia.vmt
 echo "> [avr should say h i.e. safe (all output logs and files in output/work_apache_escape_absolute_lia)]"
@@ -58,8 +60,9 @@ read -p "> press enter to continue?" userInput
 echo
 
 
-echo "> part 2: apache-get-tag (with machine integers first i.e. 32-bit variables using bit-vector theory)"
+echo "> Experiment 3: apache-get-tag (with machine integers first i.e. 32-bit variables using bit-vector theory)"
 echo "> check the C file inputs/cs1/c/apache-get-tag.c for understanding the problem"
+echo "> [evaluates: case study 1.2 (using BV), VMT frontend, proof certificates, verifying certificates using yices2]"
 read -p "> press enter to continue?" userInput
 python3 avr.py -n apache_get_tag_bv inputs/cs1/bv/apache-get-tag_bv.vmt
 echo "> [avr should say h i.e. safe (all output logs and files in output/work_apache_get_tag_bv)]"
@@ -76,7 +79,8 @@ echo "> [should report all three smt checks as unsat]"
 read -p "> press enter to continue?" userInput
 echo
 
-echo "> Now let's repeat the same (run apache-get-tag) with software integers i.e. unbounded variables using linear-integer-arithmetic theory"
+echo "> Experiment 4: Now let's repeat the same (run apache-get-tag) with software integers i.e. unbounded variables using linear-integer-arithmetic theory"
+echo "> [evaluates: case study 1.2 (using LIA), VMT frontend, proof certificates, verifying certificates using mathsat]"
 read -p "> press enter to continue?" userInput
 python3 avr.py -n apache_get_tag_lia inputs/cs1/lia/apache-get-tag_lia.vmt
 echo "> [avr should say h i.e. safe (all output logs and files in output/work_apache_get_tag_lia)]"
@@ -102,7 +106,8 @@ echo "================================================================"
 echo "> Let's run avr on the second case study cs2 (using BTOR2 frontend)"
 echo "> needham key authentication protocol"
 echo "> check the description file inputs/cs2/description.xml for understanding the problem"
-echo "> part 1: needham_2A_2B (with 2 initiators and responders each)"
+echo "> Experiment 5: needham_2A_2B (with 2 initiators and responders each)"
+echo "> [evaluates: case study 2, BTOR2 frontend, counterexample traces, verifying certificates using BtorSIM]"
 read -p "> press enter to continue?" userInput
 python3 avr.py -n needham_2A_2B inputs/cs2/btor2/needham_2A_2B.btor2
 echo "> [avr should say v i.e. reachable (all output logs and files in output/work_needham_2A_2B)]"
@@ -120,7 +125,8 @@ read -p "> press enter to continue?" userInput
 echo
 
 echo "> Now let's repeat the same (with 3 initiators and responders each)"
-echo "> part 2: needham_3A_3B (with 3 initiators and responders each)"
+echo "> Experiment 6: needham_3A_3B (with 3 initiators and responders each)"
+echo "> [evaluates: case study 2, BTOR2 frontend, counterexample traces, verifying certificates using BtorSIM]"
 read -p "> press enter to continue?" userInput
 python3 avr.py -n needham_3A_3B inputs/cs2/btor2/needham_3A_3B.btor2
 echo "> [avr should say v i.e. reachable (all output logs and files in output/work_needham_3A_3B)]"
@@ -145,8 +151,9 @@ echo
 
 echo "================================================================"
 echo "> Let's run avr on a problem derived from verification of distributed protocols (using VMT frontend)"
-echo "> part 1: Lock_server protocol (with 2 clients and 1 server)"
+echo "> Experiment 7: Lock_server protocol (with 2 clients and 1 server)"
 echo "> check the ivy file inputs/distributed/lock_server/lock_server.ivy for understanding the protocol"
+echo "> [evaluates: verifying distributed protocols, proof certificates]"
 read -p "> press enter to continue?" userInput
 python3 avr.py -n lock_server inputs/distributed/lock_server/lock_server.vmt
 echo "> [avr should say h i.e. safe (all output logs and files in output/work_lock_server)]"
@@ -166,8 +173,9 @@ echo
 
 
 echo "> Now let's run avr on a more complicated distributed protocol (using VMT frontend)"
-echo "> part 2: Learning switch (with 6 nodes)"
+echo "> Experiment 8: Learning switch (with 6 nodes)"
 echo "> check the ivy file inputs/distributed/learning_switch/learning_switch.ivy for understanding the protocol"
+echo "> [evaluates: verifying distributed protocols, proof certificates]"
 read -p "> press enter to continue?" userInput
 python3 avr.py -n learning_switch inputs/distributed/learning_switch/learning_switch.vmt
 echo "> [avr should say h i.e. safe (all output logs and files in output/work_learning_switch)]"
@@ -187,9 +195,10 @@ echo
 
 
 echo "> Let's run avr on a hardware verilog design (using Verilog frontend)"
-echo "> Model of a heap"
+echo "> Experiment 9: Model of a heap"
 echo "> check the verilog file inputs/misc/verilog/heap.v for understanding the design"
-echo "> Let's also use a timeout of 100 seconds"
+echo "> Let's also use a timeout of a few minutes"
+echo "> [evaluates: Verilog frontend]"
 read -p "> press enter to continue?" userInput
 python3 avr.py -n heap inputs/misc/verilog/heap.v --timeout 100
 echo "> [avr should say f_* i.e. timeout failure (all output logs and files in output/work_heap)]"
@@ -197,8 +206,9 @@ echo
 
 echo "> avr by default is using a config. ic3+sa+uf i.e. IC3+SA algorithm with uninterpreted functions (to focus on control-centric properties)"
 echo "> This problem is too data centric (may take around 1000 seconds to solve using default config.)"
-echo "> So let's use avr's Proof Race script (avr_pr.py) to exploit multiprocessing over multiple cores to speed up verification"
-echo "> Again use a timeout of 100 seconds"
+echo "> Experiment 10: So let's use avr's Proof Race script (avr_pr.py) to exploit multiprocessing over multiple cores to speed up verification"
+echo "> Again use a timeout of a few minutes"
+echo "> [evaluates: Verilog frontend, proof race, different techniques and add-ons]"
 read -p "> press enter to continue?" userInput
 python3 avr_pr.py -n heap inputs/misc/verilog/heap.v --timeout 100
 echo "> [proof race should say safe (all output logs and files in output/pr_heap)]"
@@ -225,8 +235,9 @@ echo
 
 
 echo "> Let's run avr's proof race on an industrial hardware design (using Verilog frontend)"
-echo "> picoJava-II Core Instruction Cache Data RAM"
+echo "> Experiment 11: picoJava-II Core Instruction Cache Data RAM"
 echo "> check the verilog file inputs/misc/verilog/picojava_icram.v for reference"
+echo "> [evaluates: Verilog frontend, proof race, different techniques and add-ons]"
 read -p "> press enter to continue?" userInput
 python3 avr_pr.py -n picojava_icram inputs/misc/verilog/picojava_icram.v
 echo "> [proof race should say safe (all output logs and files in output/pr_picojava_icram)]"
@@ -246,9 +257,10 @@ echo
 
 
 echo "> Finally, let's explore few more utilities offered by avr for the user"
-echo "> Let's run avr on a simple verilog example"
+echo "> Experiment 12: Let's run avr on a simple verilog example"
 echo "> swap_counter"
 echo "> check the verilog file inputs/misc/verilog/swap_counter.v for reference"
+echo "> [evaluates: utilities, design in .smt2, statistics, dot visualizations]"
 read -p "> press enter to continue?" userInput
 python3 avr.py -n swap_counter inputs/misc/verilog/swap_counter.v --dot "1111111"
 echo "> [avr should say safe (all output logs and files in output/work_swap_counter)]"
