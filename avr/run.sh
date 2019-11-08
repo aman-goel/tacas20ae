@@ -1,11 +1,11 @@
 #!/bin/bash
 
-echo "================================================================"
-echo "> Let's install some dependencies (distutils, tcl, xdot)"
-read -p "> press enter to continue?" userInput
-sudo apt-get install python3-distutils tcl8.6-dev xdot
-echo "> Done with dependencies"
-read -p "> press enter to continue?" userInput
+# echo "================================================================"
+# echo "> Let's install some dependencies (distutils, tcl, xdot)"
+# read -p "> press enter to continue?" userInput
+# sudo apt-get install python3-distutils tcl8.6-dev xdot
+# echo "> Done with dependencies"
+# read -p "> press enter to continue?" userInput
 
 # wget https://gitlab.eecs.umich.edu/amangoel/paper3/-/archive/master/paper3-master.zip
 
