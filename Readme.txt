@@ -49,4 +49,6 @@ The script run.sh goes through each experiment interactively, and prints further
 on what part of the paper is the experiment trying to evaluate.
 You need to press enter before and after running each experiment (as displayed by run.sh).
 
+The file avr/expected_results.zip contains the expected log of running run.sh (generated on TACAS 2020 VM).
+
 Thank you, and please let the authors know in the case of any difficulty.
