@@ -22,11 +22,11 @@ The set of experiments in the artifact attempts towards a thorough evaluation
 of the key concepts presented in the paper.
 
 Includes experimental evaluation of :
--> the two case studies 				(Section 4.1 & 4.2)	(Experiment 1-6)
--> verifying distributed protocols 		(Section 5.1)		(Experiment 7-8)
--> frontends, techniques and utilities 	(Section 3.1)		(Experiment 1-12)
--> certificates 						(Section 3.2)		(Experiment 1-12)
--> proof race 							(Section 3.3)		(Experiment 10-11)
+-> the two case studies                 (Section 4.1 & 4.2) (Experiment 1-6)
+-> verifying distributed protocols      (Section 5.1)       (Experiment 7-8)
+-> frontends, techniques and utilities  (Section 3.1)       (Experiment 1-12)
+-> certificates                         (Section 3.2)       (Experiment 1-12)
+-> proof race                           (Section 3.3)       (Experiment 10-11)
 
 Check the License.txt for license information.
 
