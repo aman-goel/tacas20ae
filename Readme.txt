@@ -37,8 +37,8 @@ The artifact is maintained on github - https://github.com/aman-goel/tacas20ae
 --------------------------------------------------------------------------
 How to run
 --------------------------------------------------------------------------
-Install packages in the packages folder i.e.
-sudo dpkg -i packages/*.deb
+Install dependencies (python3-distutils tcl8.6-dev xdot) in the packages folder using:
+sudo dpkg -i packages/*.deb         # if on Ubuntu
 
 Run the script "run.sh" in the avr folder i.e.
 cd avr
