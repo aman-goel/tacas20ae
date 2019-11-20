@@ -19,6 +19,89 @@ BTORSIM="../../deps/btorsim"
 # Z3="z3"
 
 echo "================================================================"
+echo "> Let's run avr on some model checking problems derived from sorting algorithms from:"
+echo "> invgen benchmark suite "
+echo "    https://www.cmi.ac.in/~madhukar/fmcad15/benchmarks/invgen"
+echo "    https://github.com/sosy-lab/sv-benchmarks/tree/master/c/loop-invgen"
+echo ">   Note: These are automatically translated from .c to .smt2 format by the authors of:"
+echo "      \"Infinite-state invariant checking with IC3 and predicate abstraction\""
+echo "         https://link.springer.com/article/10.1007/s10703-016-0257-4"
+echo "================================================================"
+echo "> Let's run avr on some model checking problems derived from sorting algorithms (using .smt2 frontend)"
+echo "> Experiment S1: heap_sort (with machine integers i.e. 32-bit variables using bit-vector theory)"
+echo "> check the C file inputs/sort/c/heapsort.c for understanding the problem"
+read -p "> press enter to continue?" userInput
+python3 avr_pr.py -n heapsort inputs/sort/bv/heapsort.c.smt2
+echo "> [avr should say v i.e. unsafe (all output logs and files in output/pr_heapsort)]"
+echo
+
+echo "> Let's run avr on another model checking problems derived from sorting algorithms (using .smt2 frontend)"
+echo "> Experiment S2: heap_sort1 (with machine integers i.e. 32-bit variables using bit-vector theory)"
+echo "> check the C file inputs/sort/c/heapsort1.c for understanding the problem"
+read -p "> press enter to continue?" userInput
+python3 avr_pr.py -n heapsort1 inputs/sort/bv/heapsort1.c.smt2
+echo "> [avr should say h i.e. safe (all output logs and files in output/pr_heapsort1)]"
+echo
+
+echo "> Let's check the proof certificate printed by avr for the last run using yices2 smt solver"
+echo "> proof certificate is output/pr_heapsort1/proof.smt2"
+read -p "> press enter to continue?" userInput
+cd output/pr_heapsort1
+echo "> calling yices2"
+$YICES proof.smt2
+cd ../..
+echo "> [should report all three smt checks as unsat]"
+read -p "> press enter to continue?" userInput
+echo
+
+echo "> Let's run avr on another model checking problems derived from sorting algorithms (using .smt2 frontend)"
+echo "> Experiment S3: heap_sort2 (with machine integers i.e. 32-bit variables using bit-vector theory)"
+echo "> check the C file inputs/sort/c/heapsort2.c for understanding the problem"
+read -p "> press enter to continue?" userInput
+python3 avr_pr.py -n heapsort2 inputs/sort/bv/heapsort2.c.smt2
+echo "> [avr should say h i.e. safe (all output logs and files in output/pr_heapsort2)]"
+echo
+
+echo "> Let's check the proof certificate printed by avr for the last run using yices2 smt solver"
+echo "> proof certificate is output/pr_heapsort2/proof.smt2"
+read -p "> press enter to continue?" userInput
+cd output/pr_heapsort2
+echo "> calling yices2"
+$YICES proof.smt2
+cd ../..
+echo "> [should report all three smt checks as unsat]"
+read -p "> press enter to continue?" userInput
+echo
+
+echo "> Let's run avr on another model checking problems derived from sorting algorithms (using .smt2 frontend)"
+echo "> Experiment S4: heap_sort3 (with machine integers i.e. 32-bit variables using bit-vector theory)"
+echo "> check the C file inputs/sort/c/heapsort3.c for understanding the problem"
+read -p "> press enter to continue?" userInput
+python3 avr_pr.py -n heapsort3 inputs/sort/bv/heapsort3.c.smt2
+echo "> [avr should say v i.e. safe (all output logs and files in output/pr_heapsort3)]"
+echo
+
+echo "> Let's run avr on another model checking problems derived from sorting algorithms (using .smt2 frontend)"
+echo "> Experiment S5: mergesort (with machine integers i.e. 32-bit variables using bit-vector theory)"
+echo "> check the C file inputs/sort/c/mergesort.c for understanding the problem"
+read -p "> press enter to continue?" userInput
+python3 avr_pr.py -n mergesort inputs/sort/bv/mergesort.c.smt2
+echo "> [avr should say h i.e. safe (all output logs and files in output/pr_mergesort)]"
+echo
+
+echo "> Let's check the proof certificate printed by avr for the last run using yices2 smt solver"
+echo "> proof certificate is output/pr_mergesort/proof.smt2"
+read -p "> press enter to continue?" userInput
+cd output/pr_mergesort
+echo "> calling yices2"
+$YICES proof.smt2
+cd ../..
+echo "> [should report all three smt checks as unsat]"
+read -p "> press enter to continue?" userInput
+echo
+
+
+echo "================================================================"
 echo "> Let's run avr on the first case study cs1 (using VMT frontend)"
 echo "> Experiment 1: apache-escape-absolute (with machine integers first i.e. 32-bit variables using bit-vector theory)"
 echo "> check the C file inputs/cs1/c/apache-escape-absolute.c for understanding the problem"
@@ -302,6 +385,7 @@ echo "> [should report all three smt checks as unsat]"
 echo "================================================================"
 read -p "> press enter to continue?" userInput
 echo
+
 
 
 echo "==================="
